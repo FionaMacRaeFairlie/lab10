@@ -5,12 +5,13 @@ const {ensureLoggedIn} = require('connect-ensure-login');
 const db = new guestbookDAO();
 db.init();
 
+
 exports.entries_list = function(req, res) {
     res.send('<h1>Not yet implemented: show a list of guest book entries.</h1>');
     db.getAllEntries();
 }
-
-/*exports.landing_page = function(req, res) {
+/*
+exports.landing_page = function(req, res) {
         res.send('<h1>Welcome to my Application.</h1>');
         }
 
@@ -39,7 +40,8 @@ exports.landing_page = function(req, res) {
         db.getAllEntries().then((list) => {
             res.render('entries', {
                 'title': 'Guest Book',
-                'entries': list
+                'entries': list,
+                'user':req.user
              });
             console.log('promise resolved');
             }).catch((err) => {
@@ -57,7 +59,6 @@ exports.show_new_entries = function(req, res) {
             'user': req.user
       })
 }
-
 
 exports.post_new_entry = function(req, res) {
     console.log('processing post-new_entry controller');
@@ -123,8 +124,8 @@ exports.show_login_page = function(req, res) {
     };
 
 exports.post_login = function(req, res) {
-    res.redirect("../loggedIn");
-};
+     res.redirect("/");
+    };
 
 exports.logout = function(req, res) {
     req.logout();

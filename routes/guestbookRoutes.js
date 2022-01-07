@@ -8,12 +8,13 @@ router.get("/", controller.landing_page);
 
 router.get('/guestbook', controller.entries_list);
 
-//router.get('/peter', controller.peters_entries);
+router.get('/peter', controller.peters_entries);
 
 //router.get('/new', controller.new_entry);
 //router.get('/new', controller.show_new_entries);
 router.get('/new', ensureLoggedIn('/login'),controller.show_new_entries);
-router.post('/new', controller.post_new_entry);
+//router.post('/new', controller.post_new_entry);
+router.post('/new', ensureLoggedIn('/login'), controller.post_new_entry);
 
 router.get('/posts/:author', controller.show_user_entries);
 
