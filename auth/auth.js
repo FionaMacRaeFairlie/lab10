@@ -4,11 +4,9 @@ const bcrypt = require('bcrypt');
 const userModel = require('../models/userModel');
 
 exports.init = function(app) {
-    // setup password
     passport.use(new Strategy(
         function(username, password, cb) { // cb is callback
             userModel.lookup(username, function(err, user) {
-            //console.log('lookup', username);
             if (err) {
                 console.log('error looking up user', err);
                 return cb(err);
