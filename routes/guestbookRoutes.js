@@ -51,5 +51,5 @@ router.use(function(err, req, res, next) {
     });
 
 
-// add a comment and update to check hosting
+// add another comment and update to check hosting
 module.exports = router;
